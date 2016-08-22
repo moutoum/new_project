@@ -5,41 +5,39 @@
 ## Login   <moutou_m@epitech.net>
 ##
 ## Started on  Thu Mar 24 21:51:38 2016 moutou_m
-## Last update Wed Mar 30 10:37:15 2016 moutou_m
+## Last update Mon Aug 22 21:14:15 2016 moutou_m
 ##
 
-LIB_PATH= lib/
+LIB_PATH	=	lib/
 
 #src
-SRC							= 			$(shell find ./src -name '*.c')
+SRC		=	$(shell find ./src -name '*.c')
 
 #Name
-NAME						= 			exec
+NAME		= 	exec
 
 #Compile
-CC							= 			gcc
+CC		= 	gcc
 
 #Flags
-CFLAGS					+= 			-W \
-												-Wall \
-												-Wextra \
-												-Werror \
-												-I./include/ \
-												-g
+CFLAGS		+= 	-W \
+			-Wall \
+			-Wextra \
+			-Werror \
+			-I./include/ \
+			-g
 
 #lib
-_LIBS = $(patsubst lib%, l%, $(basename $(notdir $(shell find ./lib -name 'lib*.a'))))
-LIBS = $(foreach lib, $(_LIBS), -$(lib))
-LDFLAGS 				+= 			-L./$(LIB_PATH) \
-													$(LIBS)
-
-#LDFLAGS += -L./lib/ -ltoolalloc
+_LIBS 		= 	$(patsubst lib%, l%, $(basename $(notdir $(shell find ./lib -name 'lib*.a'))))
+LIBS 		= 	$(foreach lib, $(_LIBS), -$(lib))
+LDFLAGS 	+=	-L./$(LIB_PATH) \
+			$(LIBS)
 
 #Remove
-RM							= 			rm -f
+RM		= 	rm -f
 
 #Object
-OBJ							= 			$(SRC:.c=.o)
+OBJ		= 	$(SRC:.c=.o)
 
 #Colors
 DEFAULT         =       \033[00m
@@ -47,8 +45,8 @@ GREEN           =       \033[1;32m
 TEAL            =       \033[1;36m
 RED             =       \033[1;31m
 
-count	= 0
-counter = $(shell find ./src -name '*.c' | wc -l)
+count		= 	0
+counter 	= 	$(shell find ./src -name '*.c' | wc -l)
 
 all: libs $(NAME)
 
