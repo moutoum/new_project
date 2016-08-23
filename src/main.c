@@ -5,7 +5,7 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Sun Aug 21 19:11:12 2016 moutou_m
-** Last update Mon Aug 22 20:34:40 2016 moutou_m
+** Last update Mon Aug 22 22:00:16 2016 moutou_m
 */
 
 #include <string.h>
@@ -13,38 +13,30 @@
 #include "tool_alloc.h"
 #include "vector.h"
 
-void	free_str(char *str)
+typedef struct s_toto
 {
-  if (str != NULL)
-    free(str);
-}
+  int	x;
+  int	y;
+} t_toto;
 
-void	disp_str(char **_str)
+void	disp_toto(t_toto *_val, int i)
 {
-  char	*str;
+  t_toto val = *_val;
 
-  str = *_str;
-  printf("%s\n", str);
-}
-
-void	disp_int(int *_val, int i)
-{
-  int	val = *_val;
-
-  printf("%d = %d\n", i, val);
+  printf("tab[%d]: x=%d, y=%d\n", i, val.x, val.y);
 }
 
 int main()
 {
   t_vector str_vec;
-  int	i = 55;
+  t_toto s = {0, 1};
+  t_toto e = {2, 3};
 
-  str_vec = NEW_VECTOR(int);
-  str_vec->PUSH_BACK(i, str_vec);
-  i = 78;
-  str_vec->PUSH_BACK(i, str_vec);
+  str_vec = NEW_VECTOR(t_toto);
+  str_vec->PUSH_BACK(s, str_vec);
+  str_vec->PUSH_BACK(e, str_vec);
 
-  VECTOR_DISPLAY(str_vec, disp_int);
+  VECTOR_DISPLAY(str_vec, disp_toto);
 
   DELETE(str_vec);
   return (EXIT_SUCCESS);
