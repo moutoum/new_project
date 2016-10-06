@@ -5,13 +5,14 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon May 23 12:45:36 2016 moutou_m
-** Last update Mon Aug 22 19:11:11 2016 moutou_m
+** Last update Fri Oct 07 00:57:55 2016 moutou_m
 */
 
 #include "vector.h"
 
-void		vector_remove_last_elem(t_vector vector)
+void
+vector_pop_back(t_vector vector)
 {
-  if (vector != NULL && vector->_tab_size > 0)
-    vector_remove_elem_at(vector->_tab_size - 1, vector);
+  if (vector != NULL && vector->tab_size > 0)
+    vector_remove_elem_at(vector->tab_size - 1, vector);
 }
