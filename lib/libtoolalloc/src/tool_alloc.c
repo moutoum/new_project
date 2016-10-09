@@ -5,7 +5,7 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon Aug 08 21:41:55 2016 moutou_m
-** Last update Sun Aug 21 11:34:36 2016 moutou_m
+** Last update Sat Oct 08 21:04:38 2016 moutou_m
 */
 
 #include <string.h>
@@ -18,6 +18,7 @@ void	tool_alloc_init()
 {
   size_t	alloc_init;
 
+  FNSTART();
   alloc_init = NB_ADRESS_INIT * sizeof(void *);
   g_tool_alloc.params[PARAM_TAB_SIZE] = NB_ADRESS_INIT;
   g_tool_alloc.params[PARAM_NB_ADRESS] = 0;
@@ -25,6 +26,7 @@ void	tool_alloc_init()
     {
       exit (EXIT_FAILURE);
     }
+  FNQUIT();
 }
 
 void	*tool_malloc(size_t size)
@@ -32,6 +34,7 @@ void	*tool_malloc(size_t size)
   void	*ptr;
   int	i;
 
+  FNSTART();
   if ((ptr = malloc(size)) == NULL)
     exit (EXIT_FAILURE);
   if (g_tool_alloc.params[PARAM_NB_ADRESS] == g_tool_alloc.params[PARAM_TAB_SIZE])
@@ -45,6 +48,7 @@ void	*tool_malloc(size_t size)
   i = g_tool_alloc.params[PARAM_NB_ADRESS];
   g_tool_alloc.adress_tab[i] = ptr;
   g_tool_alloc.params[PARAM_NB_ADRESS] += 1;
+  FNQUIT();
   return (ptr);
 }
 
@@ -52,6 +56,7 @@ void	*tool_bridge(void *ptr)
 {
   int	i;
 
+  FNSTART();
   if (g_tool_alloc.params[PARAM_NB_ADRESS] == g_tool_alloc.params[PARAM_TAB_SIZE])
     {
       if ((g_tool_alloc.adress_tab = realloc(g_tool_alloc.adress_tab, (g_tool_alloc.params[PARAM_TAB_SIZE] * 2) * sizeof(void *))) == NULL)
@@ -63,6 +68,7 @@ void	*tool_bridge(void *ptr)
   i = g_tool_alloc.params[PARAM_NB_ADRESS];
   g_tool_alloc.adress_tab[i] = ptr;
   g_tool_alloc.params[PARAM_NB_ADRESS] += 1;
+  FNQUIT();
   return (ptr);
 }
 
@@ -91,6 +97,7 @@ void	tool_end()
   size_t	i;
 
   i = 0;
+  FNSTART();
   while (i < g_tool_alloc.params[PARAM_NB_ADRESS])
     {
       if (g_tool_alloc.adress_tab[i] != NULL)
@@ -98,4 +105,5 @@ void	tool_end()
       i += 1;
     }
   free(g_tool_alloc.adress_tab);
+  FNQUIT();
 }

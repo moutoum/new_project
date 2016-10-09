@@ -5,13 +5,14 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Sat Aug 20 12:10:04 2016 moutou_m
-** Last update Sat Aug 20 12:11:01 2016 moutou_m
+** Last update Sat Oct 08 21:03:58 2016 moutou_m
 */
 
 #ifndef _TOOL_ALLOC_H_
 # define _TOOL_ALLOC_H_
 
 # include <stdlib.h>
+# include "errors.h"
 
 # define NB_ADRESS_INIT	(64)
 

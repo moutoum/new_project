@@ -18,7 +18,7 @@ compile:
 	 	cd $$path/ ; \
 		make -s; \
 		cd - > /dev/null; \
-		cp $$path/include/* ../include/; \
+		cp -f $$path/include/* ../include/; \
 	 done
 
 clean:

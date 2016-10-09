@@ -5,13 +5,16 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon May 09 14:56:00 2016 moutou_m
-** Last update Fri Oct 07 01:11:13 2016 moutou_m
+** Last update Sat Oct 08 20:47:46 2016 moutou_m
 */
 
 #ifndef VECTOR_H_
 # define VECTOR_H_
 
 # include <stdio.h>
+# include "errors.h"
+
+# define VCAST(TYPE) *(TYPE *)
 
 typedef struct s_vector* t_vector;
 
@@ -96,8 +99,7 @@ vector_display(t_vector vector,
 ** @param  vector
 ** @return                   [size of the vector]
 */
-size_t
-vector_get_length(t_vector vector);
+size_t vector_size(t_vector vector);
 
 /*
 ** [vector_set description]
@@ -107,10 +109,9 @@ vector_get_length(t_vector vector);
 ** @param  vector     [description]
 ** @return            [description]
 */
-int
-vector_set(void *data,
-	   const size_t index,
-	   t_vector vector);
+int vector_set(void *data,
+	       const size_t index,
+	       t_vector vector);
 
 /*
 ** [vector_qsort description]
@@ -119,8 +120,17 @@ vector_set(void *data,
 ** @param  cmp          [description]
 ** @return              [description]
 */
-void
-vector_qsort(t_vector vector,
-	     int (*cmp)(const void *, const void *));
+void vector_qsort(t_vector vector,
+		  int (*cmp)(const void *, const void *));
+
+/**
+ * [get description]
+ * @method get
+ * @param  index  [description]
+ * @param  vector [description]
+ * @return        [description]
+*/
+
+void *vector_get(const size_t index, const t_vector vector);
 
 #endif

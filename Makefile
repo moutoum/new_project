@@ -28,10 +28,13 @@ CFLAGS		+= 	-W \
 			-g
 
 #lib
-_LIBS 		= 	$(patsubst lib%, l%, $(basename $(notdir $(shell find ./lib -name 'lib*.a'))))
-LIBS 		= 	$(foreach lib, $(_LIBS), -$(lib))
-LDFLAGS 	+=	-L./$(LIB_PATH) \
-			$(LIBS)
+
+LIBS			= 	$(shell find $(LIB_PATH) -name 'lib*.a')
+
+#_LIBS 		= 	$(patsubst lib%, l%, $(basename $(notdir $(shell find ./lib -name 'lib*.a'))))
+#LIBS 		= 	$(foreach lib, $(_LIBS), -$(lib))
+LDFLAGS 	+=	-L./$(LIB_PATH) -lmerged #-lvector -lerror -ltoolalloc
+			#$(LIBS)
 
 #Remove
 RM		= 	rm -f
@@ -48,10 +51,14 @@ RED             =       \033[1;31m
 count		= 	0
 counter 	= 	$(shell find ./src -name '*.c' | wc -l)
 
-all: libs $(NAME)
+all: libs merge $(NAME)
 
 libs:
 	@(cd $(LIB_PATH) ; make -s)
+
+merge:
+	@ar rcT $(LIB_PATH)libmerged.a $(LIBS)
+	@ranlib $(LIB_PATH)libmerged.a
 
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
@@ -64,6 +71,7 @@ clean:
 
 fclean: clean
 	@(cd $(LIB_PATH) ; make fclean -s)
+	@$(RM) ./lib/libmerged.a
 	@$(RM) $(NAME)
 
 re: fclean all

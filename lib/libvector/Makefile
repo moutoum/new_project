@@ -17,7 +17,7 @@ counter = $(shell find ./src -name '*.c' | wc -l)
 
 CC	= gcc
 
-CFLAGS	= -W -Wall -Wextra -Werror -I./include/
+CFLAGS	= -W -Wall -Wextra -Werror -I./include/ -I../liberror/include/
 
 RM	= rm -f
 

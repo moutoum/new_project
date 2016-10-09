@@ -5,22 +5,25 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon May 09 16:03:18 2016 moutou_m
-** Last update Fri Oct 07 01:02:31 2016 moutou_m
+** Last update Sat Oct 08 21:11:51 2016 moutou_m
 */
 
 #include <stdlib.h>
 #include <assert.h>
+#include "errors.h"
 #include "vector.h"
 
 void
 vector_delete(t_vector	*vector)
 {
-  assert(vector != NULL);
-  assert(*vector != NULL);
+  FNSTART();
+  FNASSERT(vector != NULL);
+  FNASSERT(*vector != NULL);
   if ((*vector)->data != NULL)
     free((*vector)->data);
   free(*vector);
   *vector = NULL;
+  FNQUIT();
 }
 
 void
@@ -32,8 +35,8 @@ vector_delete_elems(t_vector *vector,
   size_t	i;
 
   i = 0;
-  assert(vector != NULL);
-  assert(*vector != NULL);
+  FNASSERT(vector != NULL);
+  FNASSERT(*vector != NULL);
   tmp = *vector;
   tab = tmp->data;
   if (tmp->elem_size == 8)

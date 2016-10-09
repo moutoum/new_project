@@ -5,7 +5,7 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Thu Oct 06 23:46:49 2016 moutou_m
-** Last update Fri Oct 07 00:55:14 2016 moutou_m
+** Last update Sat Oct 08 21:00:58 2016 moutou_m
 */
 
 #include <assert.h>
@@ -14,7 +14,9 @@
 
 void  vector_qsort(t_vector vector, int (*cmp)(const void *, const void *))
 {
+  FNSTART();
   assert(vector != NULL);
-  assert(cmp);
+  assert(cmp != NULL);
   qsort(vector->data, vector->tab_size, vector->elem_size, cmp);
+  FNQUIT();
 }

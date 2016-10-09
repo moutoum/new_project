@@ -5,7 +5,7 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon May 23 11:58:28 2016 moutou_m
-** Last update Fri Oct 07 01:07:19 2016 moutou_m
+** Last update Sat Oct 08 20:59:01 2016 moutou_m
 */
 
 #include <stdlib.h>
@@ -22,11 +22,12 @@ vector_remove_elem_at(const unsigned int at,
   unsigned int	j;
   unsigned int	k;
 
+  FNSTART();
   i = -1;
   k = 0;
-  assert(vector != NULL);
-  assert(at < vector->tab_size);
-  assert(vector->tab_size > 0);
+  FNASSERT(vector != NULL);
+  FNASSERT(at < vector->tab_size);
+  FNASSERT(vector->tab_size > 0);
   if (vector->tab_size > 1)
     {
       tmp = malloc((vector->tab_size - 1) * vector->elem_size * sizeof(char));
@@ -53,4 +54,5 @@ vector_remove_elem_at(const unsigned int at,
       free(vector->data);
       vector->data = NULL;
     }
+  FNQUIT();
 }

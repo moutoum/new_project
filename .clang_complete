@@ -1,0 +1,8 @@
+-Iinclude
+-I../include/
+-I/home/moutou_m/.froot/include
+-I../../include
+-I../inc
+-Iinc
+-I../../inc
+-I../../../include

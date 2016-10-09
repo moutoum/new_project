@@ -5,19 +5,19 @@
 ## Login   <moutou_m@epitech.net>
 ##
 ## Started on  Thu Mar 24 21:51:38 2016 moutou_m
-## Last update Mon Aug 22 21:15:23 2016 moutou_m
+## Last update Thu Mar 24 21:51:38 2016 moutou_m
 ##
 
 SRC	= $(shell find ./src -name '*.c')
 
-NAME	= libtoolalloc.a
+NAME	= liberror.a
 
 count	= 0
 counter = $(shell find ./src -name '*.c' | wc -l)
 
 CC	= gcc
 
-CFLAGS	= -W -Wall -Wextra -Werror -I./include/ -I../liberror/include/
+CFLAGS	= -W -Wall -Wextra -Werror -I./include/
 
 RM	= rm -f
 

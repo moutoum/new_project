@@ -5,7 +5,7 @@
 ** Login   <moutou_m@epitech.net>
 **
 ** Started on  Mon Aug 22 20:19:37 2016 moutou_m
-** Last update Fri Oct 07 00:55:31 2016 moutou_m
+** Last update Sat Oct 08 20:47:56 2016 moutou_m
 */
 
 #include "vector.h"
@@ -15,6 +15,7 @@ void		vector_display(t_vector vector, void (*display)())
   size_t	i;
   void		*ptr;
 
+  FNSTART();
   i = 0;
   if (vector != NULL )
     {
@@ -25,4 +26,5 @@ void		vector_display(t_vector vector, void (*display)())
 	  i++;
 	}
     }
+  FNQUIT();
 }
